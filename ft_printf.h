@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/23 11:32:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/28 19:28:18 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,17 @@ void	ft_type_function(struct s_env *p);
 void		ft_size_largeur(struct s_env *p);
 void		ft_size_intprecision(struct s_env *p);
 void		ft_print_0x(struct s_env	*p);
+void		ft_ptr_type(struct s_env		*p);
+void		ft_char_type(struct s_env 		*p);
+void		ft_str_type(struct	s_env		*p);
+void		ft_speciaux_type(struct s_env	*p);
 
 char	ft_find(char c, char *s);
 
 int 		ft_stock_flags(char *s, va_list nb_arg, int *n);
 int		ft_printf(const char *str, ...);
 int		ft_putchar(int c);
-int 		ft_putstr(char *str);
+int 		ft_putstr(char *str, int leng);
 int 		ft_putnbr(long int n);
 int		ft_nb_leng(int n);
 int		ft_putptr(long long unsigned int u);
@@ -91,10 +95,7 @@ int		ft_flag_zero(struct s_env		*p);
 int		ft_flag_point(struct s_env		*p);
 int		ft_flag_etoile(struct s_env		*p);
 int		ft_no_flag(struct s_env		*p);
-int		ft_speciaux_type(struct s_env	*p);
-int		ft_str_type(struct	s_env		*p);
-int		ft_char_type(struct s_env 		*p);
-int		ft_ptr_type(struct s_env		*p);
+int		ft_printf_str(struct s_env	*p);
 //int		ft_nb_ptr_leng(long long unsigned int *n);
 
 #endif

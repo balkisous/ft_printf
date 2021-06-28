@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/23 12:29:44 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:32:28 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,28 @@ void	init_struct_env(struct s_env *p)
 
 int		ft_print_flags(struct s_env		*p)
 {
-	//function pour type speciaux
-	//fonction par defaut
-	//il faut faire une fonction qui classe les print_type_speciaux 
 
-	if (ft_speciaux_type(p) == 0)
-	   return(0);
-	if (p->f.largeur && p->f.intprecision)
-		ft_size_largeur_and_intprecision(p);
-	else 
+	ft_speciaux_type(p);
+	if (p->t.y == 1) 
 	{
-		if (p->f.largeur)
-			ft_size_largeur(p);
-		else if (p->f.intprecision)
-			ft_size_intprecision(p);
+		if (p->f.largeur && p->f.intprecision)
+			ft_size_largeur_and_intprecision(p);
+		else 
+		{
+			if (p->f.largeur)
+				ft_size_largeur(p);
+			else if (p->f.intprecision)
+				ft_size_intprecision(p);
+		}
 	}
 	if (p->f.i == '-')
 		return (ft_tiret(p));
 	else
 	{
-//		printf("\nlargeur %d\n", p->f.largeur);
-//		printf("precision %c\n", p->f.precision);
-//		printf("intprecision %d\n\n", p->f.intprecision);
+		if (p->t.y == 0)
+		{
+			return (ft_print_type(p));
+		}
 		if (p->f.precision == 0 && p->f.i == 0 && p->f.largeur && p->f.intprecision == 0)
 			ft_no_flag(p);	
 		else if ((p->f.i == '0' && p->f.largeur && p->f.precision == 0) ||

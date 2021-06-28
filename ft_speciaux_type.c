@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:41:06 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/25 14:29:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/28 19:32:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_speciaux_type(struct	s_env	*p)
 {
 	if (p->t.s)
 	{
-		if (p->f.intprecision || p->f.largeur )
+		if (p->f.intprecision || p->f.largeur)
 			ft_str_type(p);
 	}
 	else if (p->t.c)
@@ -31,14 +31,12 @@ void		ft_speciaux_type(struct	s_env	*p)
 
 void		ft_str_type(struct	s_env		*p)
 {
-
 	if (p->f.intprecision && !p->f.largeur)
 	{
 		if(p->f.intprecision >= p->f.size_arg)
 			p->f.size_arg = p->f.size_arg;
 		else if (p->f.intprecision < p->f.size_arg)
 			p->f.size_arg = p->f.intprecision;
-		p->f.intprecision = 0;
 		p->t.y = 0;
 	}
 	else if (p->f.intprecision && p->f.largeur)
@@ -46,8 +44,8 @@ void		ft_str_type(struct	s_env		*p)
 		if (p->f.intprecision > p->f.size_arg && p->f.intprecision > p->f.largeur && 
 				p->f.largeur <= p->f.size_arg)
 		{
-			p->f.largeur = 0;
 			p->t.y = 0;
+			p->f.largeur = 0;
 		}
 		else if (p->f.intprecision > p->f.largeur && p->f.intprecision < p->f.size_arg &&
 			p->f.largeur <= p->f.size_arg)
@@ -56,12 +54,24 @@ void		ft_str_type(struct	s_env		*p)
 			p->f.size_arg = p->f.intprecision;
 			p->t.y = 0;
 		}
-		else if (p->f.largeur > p->f.intprecision)
+		else if (p->f.largeur > p->f.intprecision && p->f.largeur <= p->f.size_arg)
 		{
 			p->f.largeur -= p->f.intprecision;
+			if (p->f.intprecision < p->f.size_arg)
+				p->f.size_arg = p->f.intprecision;
+			p->t.y = 0;
+		}
+		else if (p->f.largeur > p->f.intprecision && p->f.largeur > p->f.size_arg)
+		{
+			p->f.largeur -= p->f.intprecision;
+			if (p->f.intprecision < p->f.size_arg)
+				p->f.size_arg = p->f.intprecision;
 			p->t.y = 0;
 		}
 	}
+	else if (p->f.largeur && p->f.precision)
+		p->t.y = 0;
+	printf("largeur %d, size-arg %d\n", p->f.largeur, p->f.size_arg);
 }
 
 void	ft_char_type(struct s_env		*p)

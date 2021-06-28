@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/25 14:29:16 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:22:03 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	if (p->f.type == 'c')
 		p->t.c = va_arg(nb_arg, int);
 	else if (p->f.type == 's')
+	{
 		p->t.s = va_arg(nb_arg, char *);
-	if(!p->t.s)
-		p->t.s = "(null)";
-	//if (p->f.type == 's' && p->t.s == 0)  --> ne fonctionne pas
-		//p->t.s = "0";
+		if(!p->t.s)
+			p->t.s = "(null)";
+	//	else if (p->f.type == 's' && p->t.s == 0)
+	//		p->t.s = "0";
+	}
 	else if (p->f.type == 'd' || p->f.type == 'i')
 		p->t.n = va_arg(nb_arg, int);
 	else if (p->f.type == 'p')
