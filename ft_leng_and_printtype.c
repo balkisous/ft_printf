@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/28 19:30:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:29:12 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		ft_print_type(struct s_env		*p)
 	if (p->f.type == 'c')
 		return (p->f.ret += ft_putchar(p->t.c));
 	else if (p->f.type == 's')
-		ft_printf_str(p);
+		return (ft_printf_str(p));
 	else if (p->f.type == 'd' || p->f.type == 'i')
 		return (p->f.ret += ft_putnbr(p->t.n));
 	else if (p->f.type == 'p')

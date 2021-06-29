@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/28 19:28:18 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/29 16:54:03 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		ft_ptr_type(struct s_env		*p);
 void		ft_char_type(struct s_env 		*p);
 void		ft_str_type(struct	s_env		*p);
 void		ft_speciaux_type(struct s_env	*p);
+void		ft_case_neg(struct s_env 	*p);
 
 char	ft_find(char c, char *s);
 

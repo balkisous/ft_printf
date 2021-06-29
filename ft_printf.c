@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/28 18:32:28 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:29:11 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,12 @@ int		ft_print_flags(struct s_env		*p)
 				ft_size_intprecision(p);
 		}
 	}
-	if (p->f.i == '-')
+	if (p->f.i == '-' && p->t.y == 1)
 		return (ft_tiret(p));
 	else
 	{
 		if (p->t.y == 0)
-		{
 			return (ft_print_type(p));
-		}
 		if (p->f.precision == 0 && p->f.i == 0 && p->f.largeur && p->f.intprecision == 0)
 			ft_no_flag(p);	
 		else if ((p->f.i == '0' && p->f.largeur && p->f.precision == 0) ||
@@ -150,6 +148,7 @@ int		ft_stock_flags(char *s, va_list	nb_arg, int	*n) 		////function////
 
 		}
 	}
+	ft_case_neg(&p);
 //		printf("\navant largeur %d\n", p.f.largeur);
 //		printf("avant precision %c\n", p.f.precision);
 //		printf("avant intprecision %d\n\n", p.f.intprecision);
