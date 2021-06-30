@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:41:06 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 10:33:44 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:07:26 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		ft_str_type(struct	s_env		*p)
 			p->t.y = 0;
 			p->f.largeur = 0;
 		}
-		else if (p->f.intprecision > p->f.largeur && p->f.intprecision < p->f.size_arg &&
+		else if (p->f.intprecision >= p->f.largeur && p->f.intprecision < p->f.size_arg &&
 			p->f.largeur <= p->f.size_arg)
 		{
 			p->f.largeur = 0;
