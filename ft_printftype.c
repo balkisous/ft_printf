@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 10:33:46 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:13:25 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		ft_printf_str(struct	s_env *p)
 {
-	if (p->f.largeur && p->f.precision == '.' && !p->f.intprecision)
+	if (!p->f.largeur && !p->f.intprecision && p->f.precision == '.')
+		return (p->f.ret += ft_putstr("", 0));
+	else if (p->f.largeur && p->f.precision == '.' && !p->f.intprecision)
 		return(p->f.ret += ft_print_space(p->f.largeur));
 	else if (p->f.i == '-')
 	{
