@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:21:19 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/29 18:29:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 10:33:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int main (void)
  * 			printf if (p->f.indicateur == '0')
  *					--------> putstr
 	*/
-	ret = printf("%5.7si\n", "abc");
-	reta = ft_printf("%5.7si\n","abc");
+	ret = printf("%7.7si\n", "goes");
+	reta = ft_printf("%7.7si\n","goes");
 
 	printf("ret  = %d\n", ret);
 	printf("reta = %d\n", reta);

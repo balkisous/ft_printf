@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/29 18:29:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 10:33:46 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,26 @@ int		ft_printf_str(struct	s_env *p)
 		p->f.ret += ft_putstr(p->t.s, p->f.size_arg);
 		return (p->f.ret += ft_print_space(p->f.largeur));
 	}
+	else if (p->f.largeur && !p->f.intprecision)
+	{
+		p->f.ret += ft_print_space(p->f.largeur);
+		return (p->f.ret += ft_putstr(p->t.s, p->f.size_arg));
+	}
 	else if (p->f.largeur && p->f.intprecision)
 	{
 		p->f.ret += ft_print_space(p->f.largeur);
 		return (p->f.ret += ft_putstr(p->t.s, p->f.size_arg));
 	}
-/*
+	/*
 	else if (p->f.largeur && p->f.precision != '.' && !p->f.intprecision)
 	{
 		p->f.ret += ft_print_space(p->f.largeur);
 		return (p->f.ret += ft_putstr(p->t.s, p->f.size_arg));
 	}
-*/
+	*/
 	else 
 		return (p->f.ret += ft_putstr(p->t.s, p->f.size_arg));
+	return(0);
 }
 
 void	ft_case_neg(struct s_env *p)
