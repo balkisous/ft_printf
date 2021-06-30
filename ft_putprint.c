@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/28 15:22:03 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 13:52:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	else if (p->f.type == 's')
 	{
 		p->t.s = va_arg(nb_arg, char *);
+	//	if(p->t.s == NULL)
+	//		return(ft_null_str(p));
 		if(!p->t.s)
 			p->t.s = "(null)";
-	//	else if (p->f.type == 's' && p->t.s == 0)
-	//		p->t.s = "0";
 	}
 	else if (p->f.type == 'd' || p->f.type == 'i')
 		p->t.n = va_arg(nb_arg, int);
@@ -56,26 +56,24 @@ int 	ft_putstr(char *str, int leng)	/////ft_putstr/////
 	return (i);
 }
 
-int			ft_putnbr(long int n)	////ft_putnbr////
+int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
 {
-	int		ret;
 	int		i;
 
 	i = n;
-	ret = ft_nb_leng(i);
 	if (n >= 0 && n <= 9)
 		ft_putchar(n + '0');
 	else if (n < 0)
 	{
 			ft_putchar('-');
-			ft_putnbr(-n);
+			ft_putnbr(-n, p);
 	}
 	else
 	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		ft_putnbr(n / 10, p);
+		ft_putnbr(n % 10, p);
 	}
-	return (ret);
+	return (p->f.size_arg);
 }
 
 int		ft_putnbr_unsigned(unsigned int u)

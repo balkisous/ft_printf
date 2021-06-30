@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/29 16:54:03 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 13:43:38 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void		ft_char_type(struct s_env 		*p);
 void		ft_str_type(struct	s_env		*p);
 void		ft_speciaux_type(struct s_env	*p);
 void		ft_case_neg(struct s_env 	*p);
+void		ft_negative(struct s_env	*p);
 
 char	ft_find(char c, char *s);
 
@@ -76,7 +77,7 @@ int 		ft_stock_flags(char *s, va_list nb_arg, int *n);
 int		ft_printf(const char *str, ...);
 int		ft_putchar(int c);
 int 		ft_putstr(char *str, int leng);
-int 		ft_putnbr(long int n);
+int 		ft_putnbr(long int n, struct s_env *p);
 int		ft_nb_leng(int n);
 int		ft_putptr(long long unsigned int u);
 int		ft_putnbr_hexa(unsigned int n);
@@ -97,6 +98,7 @@ int		ft_flag_point(struct s_env		*p);
 int		ft_flag_etoile(struct s_env		*p);
 int		ft_no_flag(struct s_env		*p);
 int		ft_printf_str(struct s_env	*p);
+int			ft_null_str(struct s_env	*p);
 //int		ft_nb_ptr_leng(long long unsigned int *n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/29 18:29:12 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 13:47:24 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_nb_leng(int n)
 		n /= 10;
 		i++;
 	}
+//	printf("i vaut %d\n", i);
 	return (i);
 }
 
@@ -86,7 +87,7 @@ int		ft_print_type(struct s_env		*p)
 	else if (p->f.type == 's')
 		return (ft_printf_str(p));
 	else if (p->f.type == 'd' || p->f.type == 'i')
-		return (p->f.ret += ft_putnbr(p->t.n));
+		return (p->f.ret += ft_putnbr(p->t.n, p));
 	else if (p->f.type == 'p')
 	{
 		if (p->t.y == 0)

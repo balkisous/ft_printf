@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:04:14 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/28 18:16:39 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/06/30 12:32:03 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	ft_flag_point(struct s_env	*p)
 	{
 			p->f.ret += ft_print_space(p->f.largeur);
 			ft_print_0x(p);
+			ft_negative(p);
 			p->f.ret += ft_print_zero(p->f.intprecision);
 	}
 	else if ((p->f.precision == '.' && p->f.largeur) || (p->f.precision == '.' &&
@@ -35,6 +36,7 @@ int	ft_flag_point(struct s_env	*p)
 	else if (p->f.precision == '.' && p->f.intprecision)
 	{
 		ft_print_0x(p);
+		ft_negative(p);
 		p->f.ret = ft_print_zero(p->f.intprecision);
 	}
 	return (p->f.ret);
