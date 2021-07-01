@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 09:56:21 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 13:52:53 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/01 09:57:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_tiret(struct s_env	*p)
 		ft_print_type(p);
 		p->f.ret += ft_print_space(p->f.largeur);
 	}
-	else if (p->f.intprecision && p->f.largeur == 0 && p->f.precision)
+	else if (p->f.intprecision && !p->f.largeur && p->f.precision)
 	{
 		ft_print_0x(p);
 		p->f.ret += ft_print_zero(p->f.intprecision);
@@ -92,6 +92,7 @@ void		ft_size_largeur(struct s_env *p)
 		p->f.largeur -= p->f.size_arg;
 	else
 		p->f.largeur = 0;		
+//	printf("largeur vaut %d\n", p->f.largeur);
 }
 
 void 	ft_size_intprecision(struct s_env *p)
@@ -102,6 +103,7 @@ void 	ft_size_intprecision(struct s_env *p)
 		p->f.intprecision = p->f.intprecision - p->f.size_arg;
 	else
 		p->f.intprecision = 0;
+	//printf("intprecision vaut %d\n", p->f.intprecision);
 }
 
 void		ft_size_largeur_and_intprecision_under_0(struct s_env *p)

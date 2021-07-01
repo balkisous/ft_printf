@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 13:52:51 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:13:37 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	else if (p->f.type == 's')
 	{
 		p->t.s = va_arg(nb_arg, char *);
-	//	if(p->t.s == NULL)
-	//		return(ft_null_str(p));
 		if(!p->t.s)
 			p->t.s = "(null)";
 	}
@@ -31,6 +29,9 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	else if (p->f.type == 'u' || p->f.type == 'x' || p->f.type == 'X')
 		p->t.u = va_arg(nb_arg, unsigned int);
 	p->f.size_arg = ft_size_arg(p);
+	if (p->f.intprecision && p->t.n < 0)   /// de 55 a 62 en i les trois lignes qui suivent 
+		p->f.intprecision++;
+	ft_negative(p);
 	return(ft_print_flags(p));
 }
 
@@ -73,6 +74,8 @@ int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
 		ft_putnbr(n / 10, p);
 		ft_putnbr(n % 10, p);
 	}
+	if (i == 0)
+		p->f.size_arg++;;
 	return (p->f.size_arg);
 }
 

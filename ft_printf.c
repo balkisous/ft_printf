@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 10:33:42 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/01 11:14:07 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ int		ft_stock_flags(char *s, va_list	nb_arg, int	*n) 		////function////
 		}
 	}
 	ft_case_neg(&p);
-//		printf("\navant largeur %d\n", p.f.largeur);
 //		printf("avant precision %c\n", p.f.precision);
 //		printf("avant intprecision %d\n\n", p.f.intprecision);
 

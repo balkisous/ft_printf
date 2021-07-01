@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/06/30 13:52:55 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/01 12:15:30 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ int		ft_printf_str(struct	s_env *p)
 {
 	if (!p->f.largeur && !p->f.intprecision && p->f.precision == '.')
 		return (p->f.ret += ft_putstr("", 0));
-	else if (p->t.s == NULL && p->f.largeur)
-		return (p->f.ret += ft_print_space(p->f.largeur));
-	else if (p->f.largeur && p->f.precision == '.' && !p->f.intprecision)
-		return(p->f.ret += ft_print_space(p->f.largeur));
+//	else if (p->t.s == 0 && p->f.largeur)
+//		return (p->f.ret += ft_print_space(p->f.largeur));
+	else if (p->f.largeur && p->f.precision == '.' && p->t.s == 0)
+	{
+		return (p->f.ret += ft_print_space(p->f.largeur + 6));
+	}
 	else if (p->f.i == '-')
 	{
 		p->f.ret += ft_putstr(p->t.s, p->f.size_arg);
@@ -62,9 +64,16 @@ void	ft_negative(struct s_env 	*p)
 	{
 		ft_putchar('-');
 		p->t.n = -p->t.n;
-		if (p->f.intprecision)
-			p->f.intprecision++;
-		else if (p->f.precision)
-			p->f.precision++;
 	}
+}
+int 	ft_printf_nb(struct s_env	*p)
+{
+//	printf("largeur vaut %d\n", p->f.largeur);
+//	if (p->f.intprecision && p->t.n < 0)
+//		p->f.intprecision++;
+//	ft_negative(p);
+	if ((p->f.intprecision || p->f.largeur) && p->t.n == 0)
+		return (p->f.ret);
+	else
+		return (p->f.ret += ft_putnbr(p->t.n, p));
 }
