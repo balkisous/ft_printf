@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 14:37:14 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:51:54 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
 		ft_putnbr(n / 10, p);
 		ft_putnbr(n % 10, p);
 	}
-	if (i == 0)
-		p->f.size_arg++;;
 	return (p->f.size_arg);
 }
 

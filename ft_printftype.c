@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 14:37:17 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 16:18:34 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,33 @@ void	ft_negative(struct s_env 	*p)
 }
 int 	ft_printf_nb(struct s_env	*p)
 {
-//	printf("largeur vaut %d\n", p->f.largeur);
-//	if (p->t.n == 0 && p->f.largeur && p->f.precision != '.')
-//		return (p->f.ret += ft_putnbr(0, p));
+	if (p->t.n == 0 && !p->f.intprecision && !p->f.largeur && 
+			p->f.precision == '.')
+		return (0);
 	if ((p->f.intprecision || p->f.largeur) && p->t.n == 0)
 		return (p->f.ret);
 	else
-		return (p->f.ret += ft_putnbr(p->t.n, p));
+	{
+		p->f.ret += ft_putnbr(p->t.n, p);
+		if (p->t.n == 0)
+			p->f.ret++;
+		return (p->f.ret);
+	}
+}
 
+int		ft_case_0(struct	s_env *p)
+{
+	if (p->t.n == 0)
+		p->f.ret++;
+	if (p->f.i == 0)
+	{
+		p->f.ret += ft_print_space(--p->f.largeur);
+		p->f.ret += ft_putnbr(0, p);
+	}
+	else if (p->f.i == '-')
+	{
+		p->f.ret += ft_putnbr(0, p);
+		p->f.ret += ft_print_space(--p->f.largeur);
+	}
+	return (p->f.ret);
 }

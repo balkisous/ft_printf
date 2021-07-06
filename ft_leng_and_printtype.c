@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 12:43:20 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 16:18:31 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		ft_nb_leng(int n)
 	int		i;
 
 	i = 0;
+//	if (n == 0)
+//		return (1);
 	if (n < 0)
 		i++;
 	while (n)
@@ -99,7 +101,11 @@ int		ft_print_type(struct s_env		*p)
 		}
 	}
 	else if (p->f.type == 'u')
+	{
+	//	if (p->t.u == 0)
+	//		p->f.ret++;
 		return (p->f.ret += ft_putnbr_unsigned(p->t.u));
+	}
 	else if (p->f.type == 'x')
 		return (p->f.ret += ft_putnbr_hexa(p->t.u));
 	else if (p->f.type == 'X')
