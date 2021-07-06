@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/01 12:15:30 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:37:17 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ void	ft_negative(struct s_env 	*p)
 int 	ft_printf_nb(struct s_env	*p)
 {
 //	printf("largeur vaut %d\n", p->f.largeur);
-//	if (p->f.intprecision && p->t.n < 0)
-//		p->f.intprecision++;
-//	ft_negative(p);
+//	if (p->t.n == 0 && p->f.largeur && p->f.precision != '.')
+//		return (p->f.ret += ft_putnbr(0, p));
 	if ((p->f.intprecision || p->f.largeur) && p->t.n == 0)
 		return (p->f.ret);
 	else
 		return (p->f.ret += ft_putnbr(p->t.n, p));
+
 }

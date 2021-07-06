@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/01 11:14:07 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 13:59:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_print_flags(struct s_env		*p)
 			ft_flag_zero(p);
 		else if (p->f.precision == '.' && (p->f.largeur != 0 || p->f.intprecision != 0))
 			ft_flag_point(p);
-		else if (p->f.precision == '*' &&( p->f.largeur || p->f.intprecision))
+		else if (p->f.precision == '*' && (p->f.largeur || p->f.intprecision))
 			ft_flag_etoile(p);
 		return (ft_print_type(p));
 	}
@@ -149,9 +149,6 @@ int		ft_stock_flags(char *s, va_list	nb_arg, int	*n) 		////function////
 		}
 	}
 	ft_case_neg(&p);
-//		printf("avant precision %c\n", p.f.precision);
-//		printf("avant intprecision %d\n\n", p.f.intprecision);
-
 	if(ft_find(s[(*n)], str))			//type [cspdiuxX]
 	{
 		p.f.type = s[(*n)];
