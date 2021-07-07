@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 08:25:57 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:56:54 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,37 @@ int 	ft_printf_nb(struct s_env	*p)
 
 int		ft_printf_u(struct s_env	*p)
 {
-	if (p->t.u == 0)
-		p->f.ret++;
-	return (p->f.ret += ft_putnbr_unsigned(p->t.u));
+	if ((p->f.i == '-' || p->f.i == 0) && p->t.u == 0 && 
+			p->f.precision == '.' && !p->f.intprecision)
+		return (p->f.ret);
+	if (p->t.u == 0 &&(p->f.largeur || p->f.intprecision))
+		return (p->f.ret);
+	else
+	{
+		if (p->t.u == 0)
+			p->f.ret++;
+		return (p->f.ret += ft_putnbr_unsigned(p->t.u));
+	}
+}
+
+int		ft_printf_x(struct	s_env *p)
+{
+	if ((p->f.i == '-' || p->f.i == 0) && p->t.u == 0 && 
+			p->f.precision == '.' && !p->f.intprecision && p->f.largeur)
+		return(p->f.ret += ft_print_space(1));
+	else if ((p->f.i == '-' || p->f.i == 0) && p->t.u == 0 && 
+			p->f.precision == '.' && !p->f.intprecision)
+		return (p->f.ret);
+	else
+	{
+		if (p->f.type == 'x')
+			return(p->f.ret += ft_putnbr_hexa(p->t.u));
+		if (p->f.type == 'X')
+			return (p->f.ret += ft_putnbr_heXa(p->t.u));
+		if (p->f.type == 'u')
+			return (p->f.ret += ft_putnbr_unsigned(p->t.u));
+	}
+	return (0);
 }
 
 int		ft_case_0(struct	s_env *p)
@@ -95,11 +123,15 @@ int		ft_case_0(struct	s_env *p)
 		p->f.ret++;
 	if (p->f.i == 0)
 	{
+		if (p->t.u == 0 && p->f.type == 'u')
+			p->f.ret++;
 		p->f.ret += ft_print_space(--p->f.largeur);
 		p->f.ret += ft_putnbr(0, p);
 	}
 	else if (p->f.i == '-')
 	{
+		if (p->t.u == 0 && p->f.type == 'u')
+			p->f.ret++;
 		p->f.ret += ft_putnbr(0, p);
 		p->f.ret += ft_print_space(--p->f.largeur);
 	}

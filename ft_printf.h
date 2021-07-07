@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 08:25:58 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 08:55:13 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int		ft_printf_nb(struct s_env 	*p);
 int		ft_printf_u(struct s_env	*p);
 int		ft_case_0(struct s_env	*p);
 int		ft_all_case_0(struct s_env	*p);
+int		ft_printf_x(struct s_env	*p);
 //int		ft_nb_ptr_leng(long long unsigned int *n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 17:27:50 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:32:54 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	if (p->f.intprecision != 0 && p->f.intprecision < p->f.largeur && p->f.i == '0')
 		return(ft_print_flags(p));
 	else if (p->f.i)
-	{	
+	{
 		ft_negative(p);
 		return(ft_print_flags(p));
 	}
@@ -88,7 +88,7 @@ int		ft_putnbr_unsigned(unsigned int u)
 	unsigned int 	i;
 	
 	i = u;
-	ret = ft_nb_leng(i);
+	ret = ft_nb_unsigned(i);
 	if (u >= 0 && u <= 9)
 		ft_putchar(u + '0');
 	else

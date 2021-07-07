@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 12:04:14 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 13:53:53 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:26:24 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	ft_flag_etoile(struct s_env	*p)
 
 int	ft_no_flag(struct s_env	*p)
 {
-//	if (p->t.n == 0 && p->f.largeur && p->f.precision != '.')
-//		p->f.ret += ft_print_space(--p->f.largeur);
 	if (p->f.largeur && p->f.intprecision == 0)
 		p->f.ret = ft_print_space(p->f.largeur);
 	return (p->f.ret);

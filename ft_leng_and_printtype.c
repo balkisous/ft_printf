@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 17:49:19 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 12:33:12 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int		ft_nb_leng(int n)
 	int		i;
 
 	i = 0;
-//	if (n == 0)
-//		return (1);
 	if (n < 0)
 		i++;
 	while (n)
@@ -83,7 +81,6 @@ int		ft_print_type(struct s_env		*p)
 	long long unsigned int ptr;
 
 	ptr = (long long unsigned int)p->t.p;
-//	printf("\n hexa %x\n", p->t.u);
 	if (p->f.type == 'c')
 		return (p->f.ret += ft_putchar(p->t.c));
 	else if (p->f.type == 's')
@@ -103,9 +100,7 @@ int		ft_print_type(struct s_env		*p)
 	}
 	else if (p->f.type == 'u')
 		return (ft_printf_u(p));
-	else if (p->f.type == 'x')
-		return (p->f.ret += ft_putnbr_hexa(p->t.u));
-	else if (p->f.type == 'X')
-		return (p->f.ret += ft_putnbr_heXa(p->t.u));
+	else if (p->f.type == 'x' || p->f.type == 'X')
+		return (ft_printf_x(p));
 	return (0);
 }
