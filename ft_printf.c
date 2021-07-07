@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 16:18:32 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 08:26:27 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ int		ft_print_flags(struct s_env		*p)
 	ft_speciaux_type(p);
 	if (p->t.y == 1) 
 	{
-		if (p->t.n == 0 && !p->f.intprecision && p->f.precision != '.' && 
-				p->f.largeur && p->f.i != '0')
-		return (ft_case_0(p));
+		if (ft_all_case_0(p))
+			return (p->f.ret);
 		if (p->f.largeur && p->f.intprecision)
 			ft_size_largeur_and_intprecision(p);
 		else 

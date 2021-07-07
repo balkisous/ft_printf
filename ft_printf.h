@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 15:20:38 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 08:25:58 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ int		ft_flag_point(struct s_env		*p);
 int		ft_flag_etoile(struct s_env		*p);
 int		ft_no_flag(struct s_env		*p);
 int		ft_printf_str(struct s_env	*p);
-int			ft_null_str(struct s_env	*p);
+int		ft_null_str(struct s_env	*p);
 int		ft_printf_nb(struct s_env 	*p);
+int		ft_printf_u(struct s_env	*p);
 int		ft_case_0(struct s_env	*p);
+int		ft_all_case_0(struct s_env	*p);
 //int		ft_nb_ptr_leng(long long unsigned int *n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 15:51:54 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:27:50 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int		ft_putnbr_hexa(unsigned int u)		//////ft_putnbr_hexa////////
 
 	s = "0123456789abcdef";
 	if (u / 16)
-	ft_putnbr_hexa(u/ 16);
+		ft_putnbr_hexa(u/ 16);
 	ft_putchar(s[(u % 16)]);
 	return (ft_nb_hexa_leng(u));
 }
@@ -131,7 +131,7 @@ int		ft_putnbr_heXa(unsigned int n)		////////ft_putnbr_heXa////////
 
 	s = "0123456789ABCDEF";
 	if (n / 16)
-	ft_putnbr_heXa(n / 16);
+		ft_putnbr_heXa(n / 16);
 	ft_putchar(s[(n % 16)]);
 	return (ft_nb_hexa_leng(n));
 }

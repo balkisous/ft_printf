@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 16:18:34 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/07 08:25:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,16 @@ int 	ft_printf_nb(struct s_env	*p)
 	}
 }
 
+int		ft_printf_u(struct s_env	*p)
+{
+	if (p->t.u == 0)
+		p->f.ret++;
+	return (p->f.ret += ft_putnbr_unsigned(p->t.u));
+}
+
 int		ft_case_0(struct	s_env *p)
 {
-	if (p->t.n == 0)
+	if (p->t.n == 0 && (p->f.type == 'd' || p->f.type == 'i'))
 		p->f.ret++;
 	if (p->f.i == 0)
 	{
@@ -97,4 +104,23 @@ int		ft_case_0(struct	s_env *p)
 		p->f.ret += ft_print_space(--p->f.largeur);
 	}
 	return (p->f.ret);
+}
+
+int		ft_all_case_0(struct s_env *p)
+{
+	int		r;
+
+	r = 0;
+	if ((p->f.type == 'd' || p->f.type == 'i') && p->t.n == 0)
+		r++;
+	else if ((p->f.type == 'u' || p->f.type == 'x' || p->f.type == 'X') && p->t.u == 0)
+		r++;
+	if (r)
+	{
+		if (!p->f.intprecision && p->f.precision != '.' && p->f.largeur && p->f.i != '0')
+			ft_case_0(p);
+		else 
+			r = 0;
+	}
+	return (r);
 }

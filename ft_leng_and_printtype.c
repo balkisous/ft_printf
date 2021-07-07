@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/06 16:18:31 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/06 17:49:19 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		ft_print_type(struct s_env		*p)
 	long long unsigned int ptr;
 
 	ptr = (long long unsigned int)p->t.p;
+//	printf("\n hexa %x\n", p->t.u);
 	if (p->f.type == 'c')
 		return (p->f.ret += ft_putchar(p->t.c));
 	else if (p->f.type == 's')
@@ -101,11 +102,7 @@ int		ft_print_type(struct s_env		*p)
 		}
 	}
 	else if (p->f.type == 'u')
-	{
-	//	if (p->t.u == 0)
-	//		p->f.ret++;
-		return (p->f.ret += ft_putnbr_unsigned(p->t.u));
-	}
+		return (ft_printf_u(p));
 	else if (p->f.type == 'x')
 		return (p->f.ret += ft_putnbr_hexa(p->t.u));
 	else if (p->f.type == 'X')
