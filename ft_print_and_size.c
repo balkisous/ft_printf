@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 09:56:21 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:35:02 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:32:47 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ int		ft_size_arg(struct s_env *p)
 		return (ft_nb_unsigned(p->t.u));
 	else if (p->f.type == 'x' || p->f.type == 'X')
 		return (size_arg = ft_nb_hexa_leng(p->t.u));
+	else if (p->f.type == '%')
+		return (size_arg = 1);
 	else if (p->f.type == 'p')
-		return (size_arg = 14); ///ft_nb_ptr_leng(p->t.p));
+		return (size_arg = 14 ); // ft_nb_ptr_leng(p->t.p));
 	//ici//
+//	printf("size_arg p %d\n", size_arg);
 	return(0);
 }
 

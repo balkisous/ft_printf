@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:05:16 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:35:27 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 11:59:57 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_struct_type(struct s_va_stock	*t)
 	t->n = 0;
 	t->u = 0;
 	t->c = 0;
+	t->z = 0;
 	t->s = 0;
 	t->p = 0;
 	t->y = 1;
@@ -55,12 +56,16 @@ void	init_struct_env(struct s_env *p)
 int		ft_print_flags(struct s_env		*p)
 {
 	ft_speciaux_type(p);
+//	printf("largeur %d\n", p->f.largeur);
+//	printf("intprecision %d\n", p->f.intprecision);
 	if (p->t.y == 1) 
 	{
 		if (ft_all_case_0(p))
 			return (p->f.ret);
 		if (p->f.largeur && p->f.intprecision)
+		{
 			ft_size_largeur_and_intprecision(p);
+		}
 		else 
 		{
 			if (p->f.largeur)
@@ -100,7 +105,7 @@ int		ft_stock_flags(char *s, va_list	nb_arg, int	*n) 		////function////
 	init_struct_env(&p);
 	(*n)++;
 	t = *n;
-	str = "cspdiuxX";
+	str = "cspdiuxX%";
 	while(s[(*n)] == '-' || s[(*n)] == '0')		//indicateur '-' || '0'
 	{
 		if (s[(*n)] == '-')

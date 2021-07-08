@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/02 15:20:37 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:32:54 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:20:11 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 		p->t.p = va_arg(nb_arg, long long unsigned int *);
 	else if (p->f.type == 'u' || p->f.type == 'x' || p->f.type == 'X')
 		p->t.u = va_arg(nb_arg, unsigned int);
+	else if (p->f.type == '%')
+		p->t.z = '%';
 	p->f.size_arg = ft_size_arg(p);
 	if (p->f.intprecision != 0 && p->f.intprecision < p->f.largeur && p->f.i == '0')
 		return(ft_print_flags(p));

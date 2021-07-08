@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:41:06 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:26:43 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:28:22 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void		ft_speciaux_type(struct	s_env	*p)
 				   	p->f.precision != '.'))
 			ft_ptr_type(p);
 	}
+	else if (p->t.z)
+		ft_pourcent_type(p);
 }
 
 void		ft_str_type(struct	s_env		*p)
@@ -112,4 +114,13 @@ void	ft_print_0x(struct s_env		*p)
 		if (p->t.y == 0)
 			p->f.ret += ft_putstr("0x", 2);
 	}
+}
+
+void	ft_pourcent_type(struct	s_env	*p)
+{
+	p->t.y = 0;
+	if (p->f.largeur)
+		p->f.largeur--;
+	if (p->f.intprecision)
+		p->f.intprecision = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:21:19 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:57:10 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 13:19:48 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int main (void)
 {
 	char c = 'a';
-	char *s = "coucou";
-	unsigned int  u = 33;
+	char *s = "yolo";
+	int  u = 33;
 	int ret = 0;
 	int reta = 0;
 	long long unsigned int i = 12;
@@ -49,8 +49,8 @@ int main (void)
  * 			printf if (p->f.indicateur == '0')
  *					--------> putstr
 	*/
-	ret = printf("%3u\n", 0);
-	reta = ft_printf("%3u\n", 0);
+	ret = printf("%5.p\n", 1234);
+	reta = ft_printf("%5.p\n", 1234);
 
 
 	printf("ret  = %d\n", ret);

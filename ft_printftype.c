@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 18:33:12 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:56:54 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:30:28 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,4 +155,26 @@ int		ft_all_case_0(struct s_env *p)
 			r = 0;
 	}
 	return (r);
+}
+
+int		ft_printf_z(struct	s_env *p)
+{
+	if (!p->f.largeur)
+		return (p->f.ret += ft_putchar('%'));
+	else if (p->f.largeur && p->f.i == '-')
+	{
+		p->f.ret += ft_putchar('%');
+		return (p->f.ret += ft_print_space(p->f.largeur));
+	}
+	else if (p->f.largeur && p->f.i == '0')
+	{
+		p->f.ret += ft_print_zero(p->f.largeur);
+		return (p->f.ret += ft_putchar('%'));
+	}
+	else if (p->f.largeur && !p->f.i)
+	{
+		p->f.ret += ft_print_space(p->f.largeur);
+		return (p->f.ret += ft_putchar('%'));
+	}
+	return (p->f.ret);
 }

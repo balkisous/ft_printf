@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 08:55:13 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:18:13 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_va_stock
 	long int				n;
 	unsigned int			u;
 	char					c;
+	char					z;
 	char					*s;
 	long long unsigned int	*p;
 	int						y;
@@ -70,6 +71,7 @@ void		ft_str_type(struct	s_env		*p);
 void		ft_speciaux_type(struct s_env	*p);
 void		ft_case_neg(struct s_env 	*p);
 void		ft_negative(struct s_env	*p);
+void		ft_pourcent_type(struct s_env	*p);
 
 char	ft_find(char c, char *s);
 
@@ -104,6 +106,7 @@ int		ft_printf_u(struct s_env	*p);
 int		ft_case_0(struct s_env	*p);
 int		ft_all_case_0(struct s_env	*p);
 int		ft_printf_x(struct s_env	*p);
-//int		ft_nb_ptr_leng(long long unsigned int *n);
+int		ft_printf_z(struct s_env	*p);
+int		ft_nb_ptr_leng(long long unsigned int *n);
 
 #endif

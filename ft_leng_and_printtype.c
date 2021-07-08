@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/07 12:33:12 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/07/08 12:32:51 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,18 @@ int		ft_nb_hexa_leng(unsigned int n)
 	if (n / 16)
 		i += ft_nb_hexa_leng(n / 16);
 	i++;
-	return(i);
+	return (i);
 }
 /*
 int		ft_nb_ptr_leng(long long unsigned int *n)
 {
-	printf("%p\n", n);
 	int i;
 
 	i = 0;
-//	if (n / 16 )
-//			i += ft_nb_ptr_leng(n);
+	if (n / 16)
+			i += ft_nb_ptr_leng(n / 16);
 	i++;
-	return(i);
+	return (i);
 }
 */
 ////////////////////function print type
@@ -102,5 +101,7 @@ int		ft_print_type(struct s_env		*p)
 		return (ft_printf_u(p));
 	else if (p->f.type == 'x' || p->f.type == 'X')
 		return (ft_printf_x(p));
+	else if (p->f.type == '%')
+		return (ft_printf_z(p));
 	return (0);
 }
