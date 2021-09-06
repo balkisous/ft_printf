@@ -12,14 +12,14 @@
 
 #include "ft_printf.h"
 
-int		ft_stock_type(struct s_env *p, va_list	nb_arg)
+int	ft_stock_type(struct s_env *p, va_list	nb_arg)
 {
 	if (p->f.type == 'c')
 		p->t.c = va_arg(nb_arg, int);
 	else if (p->f.type == 's')
 	{
 		p->t.s = va_arg(nb_arg, char *);
-		if(!p->t.s)
+		if (!p->t.s)
 			p->t.s = "(null)";
 	}
 	else if (p->f.type == 'd' || p->f.type == 'i')
@@ -31,28 +31,30 @@ int		ft_stock_type(struct s_env *p, va_list	nb_arg)
 	else if (p->f.type == '%')
 		p->t.z = '%';
 	p->f.size_arg = ft_size_arg(p);
-	if (p->f.intprecision != 0 && p->f.intprecision < p->f.largeur && p->f.i == '0')
-		return(ft_print_flags(p));
+	if (p->f.intprecision != 0 && p->f.intprecision < p->f.largeur
+		&& p->f.i == '0')
+		return (ft_print_flags(p));
 	else if (p->f.i)
 	{
 		ft_negative(p);
-		return(ft_print_flags(p));
+		return (ft_print_flags(p));
 	}
 	else
-		return(ft_print_flags(p));
+		return (ft_print_flags(p));
 }
 
-int		ft_putchar(int c)		/////ft_putchar////
+int	ft_putchar(int c)
 {
-	char b;
+	char	b;
 
 	b = (char)c;
 	write (1, &b, 1);
 	return (1);
 }
-int 	ft_putstr(char *str, int leng)	/////ft_putstr/////
+
+int	ft_putstr(char *str, int leng)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && leng)
@@ -64,7 +66,7 @@ int 	ft_putstr(char *str, int leng)	/////ft_putstr/////
 	return (i);
 }
 
-int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
+int	ft_putnbr(long int n, struct s_env *p)
 {
 	int		i;
 
@@ -73,8 +75,8 @@ int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
 		ft_putchar(n + '0');
 	else if (n < 0)
 	{
-			ft_putchar('-');
-			ft_putnbr(-n, p);
+		ft_putchar('-');
+		ft_putnbr(-n, p);
 	}
 	else
 	{
@@ -84,11 +86,11 @@ int			ft_putnbr(long int n, struct s_env *p)	////ft_putnbr////
 	return (p->f.size_arg);
 }
 
-int		ft_putnbr_unsigned(unsigned int u)
+int	ft_putnbr_unsigned(unsigned int u)
 {							
-	int				ret;						////pas tester 
-	unsigned int 	i;
-	
+	int				ret;
+	unsigned int	i;
+
 	i = u;
 	ret = ft_nb_unsigned(i);
 	if (u >= 0 && u <= 9)
@@ -100,7 +102,8 @@ int		ft_putnbr_unsigned(unsigned int u)
 	}
 	return (ret);
 }
-int		ft_putptr(long long unsigned int u)		////////ft_putptr//////
+
+int	ft_putptr(long long unsigned int u)
 {
 	char	*s;
 	char	c;
@@ -108,26 +111,25 @@ int		ft_putptr(long long unsigned int u)		////////ft_putptr//////
 
 	ret = 0;
 	s = "0123456789abcdef";
-//	ret += ft_putstr("0x");      //// il manque 0x au debut + il manque +3 a ret 
-	if(u / 16)
+	if (u / 16)
 		ret += ft_putptr(u / 16);
 	c = s[(u % 16)];
 	ret += write(1, &c, 1);
 	return (ret);
 }
 
-int		ft_putnbr_hexa(unsigned int u)		//////ft_putnbr_hexa////////
+int	ft_putnbr_hexa(unsigned int u)
 {
 	char	*s;
 
 	s = "0123456789abcdef";
 	if (u / 16)
-		ft_putnbr_hexa(u/ 16);
+		ft_putnbr_hexa(u / 16);
 	ft_putchar(s[(u % 16)]);
 	return (ft_nb_hexa_leng(u));
 }
 
-int		ft_putnbr_heXa(unsigned int n)		////////ft_putnbr_heXa////////
+int	ft_putnbr_heXa(unsigned int n)
 {
 	char	*s;
 
