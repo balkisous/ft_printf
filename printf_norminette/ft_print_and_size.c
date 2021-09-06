@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 09:56:21 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/06 09:44:44 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:55:07 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,88 +83,4 @@ int	ft_size_arg(struct s_env *p)
 	else if (p->f.type == 'p')
 		return (size_arg = 14 );
 	return (0);
-}
-
-////////////////////////////////////////////// delete
-
-void	ft_size_largeur(struct s_env *p)
-{
-	if (p->f.largeur < 0)
-	{
-		p->f.i = '-';
-		p->f.largeur = -p->f.largeur;
-	}
-	if (p->f.size_arg < p->f.largeur)
-		p->f.largeur -= p->f.size_arg;
-	else
-		p->f.largeur = 0;
-}
-
-void	ft_size_intprecision(struct s_env *p)
-{
-	if (p->f.intprecision < 0)
-		p->f.intprecision = 0;
-	else if (p->f.size_arg < p->f.intprecision)
-		p->f.intprecision = p->f.intprecision - p->f.size_arg;
-	else
-		p->f.intprecision = 0;
-}
-
-void	ft_size_largeur_and_intprecision_under_0(struct s_env *p)
-{
-	if (p->f.largeur < 0 && p->f.intprecision > 0)
-	{
-		p->f.largeur = -p->f.largeur;
-		p->f.largeur -= p->f.intprecision;
-		p->f.intprecision -= p->f.size_arg;
-		p->f.i = '-';
-	}
-	else if (p->f.intprecision < 0 && p->f.largeur > 0)
-	{
-		if (p->f.intprecision < 0 && p->f.i == '-')
-		{
-			p->f.largeur = 0;
-			p->f.intprecision -= p->f.size_arg;
-		}
-		else if (p->f.intprecision < 0 && p->f.i != '-')
-		{
-			p->f.intprecision = 0;
-			p->f.largeur -= p->f.size_arg;
-		}
-	}
-	else if (p->f.largeur < 0 && p->f.intprecision < 0)
-	{
-		p->f.i = '-';
-		p->f.intprecision = 0;
-		p->f.largeur = -p->f.largeur;
-		p->f.largeur -= p->f.size_arg;
-	}
-}
-
-void	ft_size_largeur_and_intprecision(struct s_env *p)
-{
-	if (p->f.largeur < 0 || p->f.intprecision < 0)
-		ft_size_largeur_and_intprecision_under_0(p);
-	else if (p->f.intprecision <= p->f.size_arg
-		&& p->f.largeur <= p->f.size_arg)
-	{
-		p->f.largeur = 0;
-		p->f.intprecision = 0;
-	}
-	else if (p->f.largeur > p->f.intprecision
-		&& p->f.intprecision < p->f.size_arg)
-	{
-		p->f.largeur -= p->f.size_arg;
-		p->f.intprecision = 0;
-	}
-	else if (p->f.largeur > p->f.intprecision)
-	{
-		p->f.largeur -= p->f.intprecision;
-		p->f.intprecision -= p->f.size_arg;
-	}
-	else if (p->f.intprecision >= p->f.largeur)
-	{
-		p->f.intprecision -= p->f.size_arg;
-		p->f.largeur = 0;
-	}
 }

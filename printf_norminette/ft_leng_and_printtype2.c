@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 08:13:34 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/06 09:28:09 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:35:20 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_print_type_two(struct s_env	*p)
 		return (ft_printf_z(p));
 	return (0);
 }
-/*
+
 void	ft_size_largeur(struct s_env *p)
 {
 	if (p->f.largeur < 0)
@@ -80,4 +80,3 @@ void	ft_largeur_int_sous_0(struct s_env *p)
 	p->f.largeur = -p->f.largeur;
 	p->f.largeur -= p->f.size_arg;
 }
-*/

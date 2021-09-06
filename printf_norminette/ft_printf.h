@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/06 09:25:36 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 15:54:13 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_case_neg(struct s_env	*p);
 void	ft_negative(struct s_env	*p);
 void	ft_pourcent_type(struct s_env	*p);
 void	ft_largeur_int_sous_0(struct s_env *p);
+void	ft_stock_type2(struct s_env *p, va_list nb_arg);
 char	ft_find(char c, char *s);
 int		ft_stock_flags(char *s, va_list nb_arg, int *n);
 int		ft_printf(const char *str, ...);
