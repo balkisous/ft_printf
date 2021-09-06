@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 10:02:27 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/08 12:32:51 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 08:32:21 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 ////////////////function leng type/////////////
 
-int		ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -24,7 +24,7 @@ int		ft_strlen(char *s)
 	return (i);
 }
 
-int		ft_nb_leng(int n)
+int	ft_nb_leng(int n)
 {
 	int		i;
 
@@ -39,9 +39,9 @@ int		ft_nb_leng(int n)
 	return (i);
 }
 
-int		ft_nb_unsigned(unsigned int n)
+int	ft_nb_unsigned(unsigned int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (n)
@@ -51,10 +51,11 @@ int		ft_nb_unsigned(unsigned int n)
 	}
 	return (i);
 }
-int		ft_nb_hexa_leng(unsigned int n)
+
+int	ft_nb_hexa_leng(unsigned int n)
 {
 	int		i;
-	
+
 	i = 0;
 	if (n / 16)
 		i += ft_nb_hexa_leng(n / 16);
@@ -75,9 +76,9 @@ int		ft_nb_ptr_leng(long long unsigned int *n)
 */
 ////////////////////function print type
 
-int		ft_print_type(struct s_env		*p)
+int	ft_print_type(struct s_env		*p)
 {
-	long long unsigned int ptr;
+	long long unsigned int	ptr;
 
 	ptr = (long long unsigned int)p->t.p;
 	if (p->f.type == 'c')
@@ -94,14 +95,8 @@ int		ft_print_type(struct s_env		*p)
 		{
 			ft_putstr("0x", 2);
 			p->f.ret += 2;
-			return(p->f.ret += ft_putptr(ptr));
+			return (p->f.ret += ft_putptr(ptr));
 		}
 	}
-	else if (p->f.type == 'u')
-		return (ft_printf_u(p));
-	else if (p->f.type == 'x' || p->f.type == 'X')
-		return (ft_printf_x(p));
-	else if (p->f.type == '%')
-		return (ft_printf_z(p));
-	return (0);
+	return (ft_print_type_two(p));
 }

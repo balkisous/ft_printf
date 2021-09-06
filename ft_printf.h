@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/08 12:18:13 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 09:25:36 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		ft_speciaux_type(struct s_env	*p);
 void		ft_case_neg(struct s_env 	*p);
 void		ft_negative(struct s_env	*p);
 void		ft_pourcent_type(struct s_env	*p);
+void		ft_largeur_int_sous_0(struct s_env *p);
 
 char	ft_find(char c, char *s);
 
@@ -91,6 +92,7 @@ int		ft_size_arg(struct s_env *p);
 int 	ft_print_flags(struct s_env *p);
 int		ft_nb_hexa_leng(unsigned int n);
 int		ft_print_type(struct s_env 	*p);
+int		ft_print_type_two(struct s_env	*p);
 int		ft_tiret(struct s_env *p);
 int		ft_nb_unsigned(unsigned int n);
 int		ft_print_zero(int 	print);

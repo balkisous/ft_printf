@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 09:56:21 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/07/08 12:32:47 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/06 09:44:44 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ///////  function flags //////
 
-int		ft_tiret(struct s_env	*p)
+int	ft_tiret(struct s_env	*p)
 {
 	if (p->f.largeur == 0 && p->f.intprecision == 0)
 		p->f.ret = ft_print_type(p);
@@ -24,7 +24,6 @@ int		ft_tiret(struct s_env	*p)
 		p->f.ret += ft_print_zero(p->f.intprecision);
 		ft_print_type(p);
 		p->f.ret += ft_print_space(p->f.largeur);
-
 	}
 	else if (p->f.largeur || (p->f.largeur && p->f.precision == '.'))
 	{
@@ -40,17 +39,17 @@ int		ft_tiret(struct s_env	*p)
 	return (p->f.ret);
 }
 
-int		ft_print_zero(int	print)
+int	ft_print_zero(int	print)
 {
 	int	ret;
 
 	ret = print;
-	while(print--)
+	while (print--)
 		write(1, "0", 1);
 	return (ret);
 }
 
-int		ft_print_space(int	print)
+int	ft_print_space(int	print)
 {
 	int	ret;
 
@@ -60,7 +59,7 @@ int		ft_print_space(int	print)
 	return (ret);
 }
 
-int		ft_size_arg(struct s_env *p)
+int	ft_size_arg(struct s_env *p)
 {
 	int	size_arg;
 
@@ -72,7 +71,7 @@ int		ft_size_arg(struct s_env *p)
 	else if (p->f.type == 'd' || p->f.type == 'i')
 	{
 		if (p->f.intprecision && p->t.n < 0)
-			p->f.intprecision++;	// gerer la taille de l'intprecision car le - prend une place en plus 
+			p->f.intprecision++;
 		return (size_arg = ft_nb_leng(p->t.n));
 	}
 	else if (p->f.type == 'u')
@@ -82,26 +81,25 @@ int		ft_size_arg(struct s_env *p)
 	else if (p->f.type == '%')
 		return (size_arg = 1);
 	else if (p->f.type == 'p')
-		return (size_arg = 14 ); // ft_nb_ptr_leng(p->t.p));
-	//ici//
-//	printf("size_arg p %d\n", size_arg);
-	return(0);
+		return (size_arg = 14 );
+	return (0);
 }
 
-void		ft_size_largeur(struct s_env *p)
+////////////////////////////////////////////// delete
+void	ft_size_largeur(struct s_env *p)
 {
 	if (p->f.largeur < 0)
 	{
 		p->f.i = '-';
 		p->f.largeur = -p->f.largeur;
 	}
-	if (p->f.size_arg < p->f.largeur) 
+	if (p->f.size_arg < p->f.largeur)
 		p->f.largeur -= p->f.size_arg;
 	else
-		p->f.largeur = 0;		
+		p->f.largeur = 0;
 }
 
-void 	ft_size_intprecision(struct s_env *p)
+void	ft_size_intprecision(struct s_env *p)
 {
 	if (p->f.intprecision < 0)
 		p->f.intprecision = 0;
@@ -111,7 +109,7 @@ void 	ft_size_intprecision(struct s_env *p)
 		p->f.intprecision = 0;
 }
 
-void		ft_size_largeur_and_intprecision_under_0(struct s_env *p)
+void	ft_size_largeur_and_intprecision_under_0(struct s_env *p)
 {
 	if (p->f.largeur < 0 && p->f.intprecision > 0)
 	{
@@ -142,16 +140,18 @@ void		ft_size_largeur_and_intprecision_under_0(struct s_env *p)
 	}
 }
 
-void		ft_size_largeur_and_intprecision(struct s_env *p)
+void	ft_size_largeur_and_intprecision(struct s_env *p)
 {
 	if (p->f.largeur < 0 || p->f.intprecision < 0)
 		ft_size_largeur_and_intprecision_under_0(p);
-	else if (p->f.intprecision <= p->f.size_arg && p->f.largeur <= p->f.size_arg)
+	else if (p->f.intprecision <= p->f.size_arg &&
+		p->f.largeur <= p->f.size_arg)
 	{
 		p->f.largeur = 0;
-		p->f.intprecision = 0;	
+		p->f.intprecision = 0;
 	}
-	else if (p->f.largeur > p->f.intprecision && p->f.intprecision < p->f.size_arg)
+	else if (p->f.largeur > p->f.intprecision &&
+		p->f.intprecision < p->f.size_arg)
 	{
 		p->f.largeur -= p->f.size_arg;
 		p->f.intprecision = 0;
@@ -161,7 +161,7 @@ void		ft_size_largeur_and_intprecision(struct s_env *p)
 		p->f.largeur -= p->f.intprecision;
 		p->f.intprecision -= p->f.size_arg;
 	}
-	else if(p->f.intprecision >= p->f.largeur)
+	else if (p->f.intprecision >= p->f.largeur)
 	{
 		p->f.intprecision -= p->f.size_arg;
 		p->f.largeur = 0;
