@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/21 11:41:06 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/06 16:28:28 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/07 07:45:07 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,81 +50,48 @@ void	ft_str_type(struct	s_env		*p)
 		p->t.y = 0;
 	}
 	else if (p->f.intprecision && p->f.largeur)
-	{
-		if (p->f.intprecision > p->f.size_arg
-			&& p->f.intprecision > p->f.largeur
-			&& p->f.largeur <= p->f.size_arg)
-		{
-			p->t.y = 0;
-			p->f.largeur = 0;
-		}
-		else if (p->f.intprecision >= p->f.largeur
-			&& p->f.intprecision < p->f.size_arg
-			&& p->f.largeur <= p->f.size_arg)
-		{
-			p->f.largeur = 0;
-			p->f.size_arg = p->f.intprecision;
-			p->t.y = 0;
-		}
-		else if (p->f.largeur > p->f.intprecision
-			&& p->f.largeur <= p->f.size_arg)
-		{
-			p->f.largeur -= p->f.intprecision;
-			if (p->f.intprecision < p->f.size_arg)
-				p->f.size_arg = p->f.intprecision;
-			p->t.y = 0;
-		}
-		else if (p->f.largeur >= p->f.intprecision
-				&& p->f.largeur > p->f.size_arg)
-		{
-			if (p->f.intprecision < p->f.size_arg)
-				p->f.size_arg = p->f.intprecision;
-			else if (p->f.intprecision > p->f.size_arg)
-				p->f.intprecision = p->f.size_arg;
-			p->f.largeur -= p->f.intprecision;
-			p->t.y = 0;
-		}
-	}
+		ft_string_type(p);
 }
 
-void	ft_char_type(struct s_env		*p)
+void	ft_string_type(struct s_env	*p)
 {
-	if (p->f.largeur && p->f.i == '0' && p->f.precision == '.')
-	{	
-		p->f.intprecision = p->f.largeur;
+	if (p->f.intprecision > p->f.size_arg
+		&& p->f.intprecision > p->f.largeur
+		&& p->f.largeur <= p->f.size_arg)
+	{
+		p->t.y = 0;
 		p->f.largeur = 0;
 	}
-	else if ((p->f.intprecision && p->f.largeur == 0)
-		|| (p->f.intprecision && p->f.largeur))
-		p->f.intprecision = 0;
-}
-
-void	ft_ptr_type(struct s_env		*p)
-{
-	if (p->f.intprecision)
+	else if (p->f.intprecision >= p->f.largeur
+		&& p->f.intprecision < p->f.size_arg
+		&& p->f.largeur <= p->f.size_arg)
 	{
+		p->f.largeur = 0;
+		p->f.size_arg = p->f.intprecision;
 		p->t.y = 0;
-		p->f.intprecision += 2;
 	}
-	else if ((p->f.i == '0' && p->f.largeur) || (p->f.i == '0'
-			&& p->f.largeur && p->f.precision != '.'))
-		p->t.y = 0;
+	else if (p->f.largeur > p->f.intprecision
+		&& p->f.largeur <= p->f.size_arg)
+		ft_string_type3(p);
+	else if (p->f.largeur >= p->f.intprecision
+		&& p->f.largeur > p->f.size_arg)
+		ft_string_type2(p);
 }
 
-void	ft_print_0x(struct s_env		*p)
+void	ft_string_type2(struct s_env	*p)
 {
-	if (p->t.p)
-	{
-		if (p->t.y == 0)
-			p->f.ret += ft_putstr("0x", 2);
-	}
-}
-
-void	ft_pourcent_type(struct	s_env	*p)
-{
+	if (p->f.intprecision < p->f.size_arg)
+		p->f.size_arg = p->f.intprecision;
+	else if (p->f.intprecision > p->f.size_arg)
+		p->f.intprecision = p->f.size_arg;
+	p->f.largeur -= p->f.intprecision;
 	p->t.y = 0;
-	if (p->f.largeur)
-		p->f.largeur--;
-	if (p->f.intprecision)
-		p->f.intprecision = 0;
+}
+
+void	ft_string_type3(struct s_env	*p)
+{
+	p->f.largeur -= p->f.intprecision;
+	if (p->f.intprecision < p->f.size_arg)
+		p->f.size_arg = p->f.intprecision;
+	p->t.y = 0;
 }

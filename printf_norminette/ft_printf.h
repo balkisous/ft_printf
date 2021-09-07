@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/28 14:07:10 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/06 15:54:13 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/07 10:12:08 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ typedef struct s_env
 	struct s_va_stock	t;
 }				t_env;
 
-void	init_struct_fags(struct s_flags	*f);
-void	init_struct_type(struct s_va_stock *t);
+void	init_struct_flags(struct s_flags	*f);
+void	init_struct_type(struct s_va_stock	*t);
+void	init_struct_env(struct s_env	*p);
+void	ft_stock_flags1(char *s, int *n, struct s_env *p);
+void	ft_stock_flags2(char *s, va_list nb_arg, int *n, struct s_env *p);
+void	ft_stock_flags3(char *s, va_list nb_arg, int *n, struct s_env *p);
 void	ft_size_largeur_and_intprecision(struct s_env *p);
 void	ft_size_largeur_and_intprecision_under_0(struct s_env *p);
 void	ft_type_function(struct s_env *p);
@@ -74,6 +78,9 @@ void	ft_negative(struct s_env	*p);
 void	ft_pourcent_type(struct s_env	*p);
 void	ft_largeur_int_sous_0(struct s_env *p);
 void	ft_stock_type2(struct s_env *p, va_list nb_arg);
+void	ft_string_type(struct s_env	*p);
+void	ft_string_type2(struct s_env	*p);
+void	ft_string_type3(struct s_env	*p);
 char	ft_find(char c, char *s);
 int		ft_stock_flags(char *s, va_list nb_arg, int *n);
 int		ft_printf(const char *str, ...);
@@ -109,5 +116,6 @@ int		ft_all_case_0(struct s_env	*p);
 int		ft_printf_x(struct s_env	*p);
 int		ft_printf_z(struct s_env	*p);
 int		ft_nb_ptr_leng(long long unsigned int *n);
+int		ft_print_flags2(struct s_env	*p);
 
 #endif
